@@ -8,11 +8,13 @@
 
 include("../includes/bookDatabase.php");
 
+$db_name = $_ENV['DB_NAME'] ?? "book_movie_db";
+
 function get_book()
 {
-    global $bookconn;
+    global $bookconn, $db_name;
     $output = '';
-    $sql = "SELECT _title, author_name, country, release_year FROM bookstore.books WHERE _title LIKE '%".$_GET["search"]."%'";
+    $sql = "SELECT _title, author_name, country, release_year FROM $db_name.books WHERE _title LIKE '%".$_GET["search"]."%'";
     //echo $sql;
     $result = mysqli_query($bookconn, $sql);
 // Check connection

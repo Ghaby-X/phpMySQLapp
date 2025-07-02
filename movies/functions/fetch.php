@@ -8,11 +8,13 @@
 
 include("../includes/movieDatabase.php");
 
+$db_name = $_ENV['DB_NAME'] ?? "book_movie_db";
+
 function get_film()
 {
-    global $conn;
+    global $conn, $db_name;
     $output = '';
-    $sql = "SELECT _title, director, release_year, country FROM moviedb.films WHERE _title LIKE '%".$_GET["search"]."%'";
+    $sql = "SELECT _title, director, release_year, country FROM $db_name.films WHERE _title LIKE '%".$_GET["search"]."%'";
     //echo $sql;
     $result = mysqli_query($conn, $sql);
 // Check connection

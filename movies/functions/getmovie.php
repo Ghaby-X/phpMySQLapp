@@ -1,11 +1,14 @@
 <?php
 //include("../includes/database.php");
 
+$db_name = $_ENV['DB_NAME'] ?? "book_movie_db";
+// Debug: echo "DB_NAME: " . ($db_name) . "<br>";
+
 function get_films($data)
 {
-    global $conn;
+    global $conn, $db_name;
     $output = '';
-    $sql = "SELECT _title, director, release_year, country FROM moviedb.films WHERE _id IN (SELECT film_id FROM moviedb.genre_film_relationship WHERE genre_id = (SELECT _id FROM moviedb.genre WHERE _title = '" . $data . "'))";
+    $sql = "SELECT _title, director, release_year, country FROM $db_name.films WHERE _id IN (SELECT film_id FROM $db_name.genre_film_relationship WHERE genre_id = (SELECT _id FROM $db_name.genre WHERE _title = '" . $data . "'))";
     //echo $sql;
 
 
@@ -45,9 +48,9 @@ function get_films($data)
 
 function get_country($data)
 {
-    global $conn;
+    global $conn, $db_name;
     $output = '';
-    $sql = "SELECT _title, director, release_year, country FROM moviedb.films WHERE country = '" . $data . "'";
+    $sql = "SELECT _title, director, release_year, country FROM $db_name.films WHERE country = '" . $data . "'";
     //echo $sql;
 
 
@@ -86,9 +89,9 @@ function get_country($data)
 
 function get_director($data)
 {
-    global $conn;
+    global $conn, $db_name;
     $output = '';
-    $sql = "SELECT _title, director, release_year, country FROM moviedb.films WHERE director = '" . $data . "'";
+    $sql = "SELECT _title, director, release_year, country FROM $db_name.films WHERE director = '" . $data . "'";
     //echo $sql;
 
 
@@ -127,9 +130,9 @@ function get_director($data)
 
 function get_year($data)
 {
-    global $conn;
+    global $conn, $db_name;
     $output = '';
-    $sql = $sql = "SELECT _title, director, release_year, country FROM moviedb.films WHERE release_year = '" . $data . "'";
+    $sql = "SELECT _title, director, release_year, country FROM $db_name.films WHERE release_year = '" . $data . "'";
     //echo $sql;
 
 

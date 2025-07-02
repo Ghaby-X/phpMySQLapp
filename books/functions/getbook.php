@@ -1,13 +1,15 @@
 <?php
 //include("../includes/database.php");
 
+$db_name = $_ENV['DB_NAME'] ?? "book_movie_db";
+
 function get_films($data)
 {
-    global $bookconn;
+    global $bookconn, $db_name;
     $output = '';
-    $sql = "SELECT _title, author_name, country, release_year FROM bookstore.books 
-              WHERE _id IN (SELECT _book_id FROM bookstore.book_category_relationship 
-                WHERE _cat_id = (SELECT cat_id FROM bookstore.category WHERE cat_title ='" . $data . "'))";
+    $sql = "SELECT _title, author_name, country, release_year FROM $db_name.books 
+              WHERE _id IN (SELECT _book_id FROM $db_name.book_category_relationship 
+                WHERE _cat_id = (SELECT cat_id FROM $db_name.category WHERE cat_title ='" . $data . "'))";
     //echo $sql;
 
 
@@ -46,9 +48,9 @@ function get_films($data)
 
 function get_country($data)
 {
-    global $bookconn;
+    global $bookconn, $db_name;
     $output = '';
-    $sql = "SELECT _title, author_name, country, release_year FROM bookstore.books WHERE country = '" . $data . "'";
+    $sql = "SELECT _title, author_name, country, release_year FROM $db_name.books WHERE country = '" . $data . "'";
     //echo $sql;
 
 
@@ -87,9 +89,9 @@ function get_country($data)
 
 function get_author($data)
 {
-    global $bookconn;
+    global $bookconn, $db_name;
     $output = '';
-    $sql = "SELECT _title, author_name, country, release_year FROM bookstore.books WHERE author_name = '" . $data . "'";
+    $sql = "SELECT _title, author_name, country, release_year FROM $db_name.books WHERE author_name = '" . $data . "'";
     //echo $sql;
 
 
@@ -128,9 +130,9 @@ function get_author($data)
 
 function get_year($data)
 {
-    global $bookconn;
+    global $bookconn, $db_name;
     $output = '';
-    $sql = $sql = "SELECT _title, author_name, country, release_year FROM bookstore.books WHERE release_year = '" . $data . "'";
+    $sql = "SELECT _title, author_name, country, release_year FROM $db_name.books WHERE release_year = '" . $data . "'";
     //echo $sql;
 
 
