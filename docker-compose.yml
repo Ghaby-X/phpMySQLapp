@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:80"  
+    depends_on:
+      - db 
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DB_SERVERNAME=db
+      - DB_NAME=book_movie_db
+
+
+  db:
+    image: mysql:8.1.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: book_movie_db
+    volumes:
+      - ./mysql_data:/var/lib/mysql 
+      - ./mySqlDB:/docker-entrypoint-initdb.d
+
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - "8080:80"  
+  #   depends_on:
+  #     - db   
+  #   environment:
+  #     PMA_HOST: db

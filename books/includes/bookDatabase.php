@@ -1,8 +1,8 @@
 <?php
-$servername = $_ENV['DB_SERVERNAME'] ?? "127.0.0.1";
+$servername = $_ENV['DB_SERVERNAME'] ?? "db";
 $username = "root";
 $password = "admin";
-$dbname = "bookstore";
+$dbname = $_ENV['DB_NAME'] ?? "book_movie_db";
 
 $bookconn = mysqli_connect($servername, $username, $password, $dbname );
 // Check connection
