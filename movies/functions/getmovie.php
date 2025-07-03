@@ -2,7 +2,6 @@
 //include("../includes/database.php");
 
 $db_name = $_ENV['DB_NAME'] ?? "book_movie_db";
-// Debug: echo "DB_NAME: " . ($db_name) . "<br>";
 
 function get_films($data)
 {
