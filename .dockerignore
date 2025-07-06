@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+.env
+mysql_data
+*.md
+.DS_Store

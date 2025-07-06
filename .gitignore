@@ -7,3 +7,6 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform
 .env
+
+
+Dockerfile
