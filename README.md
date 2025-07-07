@@ -9,7 +9,7 @@ and deployment of high performance web applications which require a solid and re
 
 ## Architecture
 
-![alt text](architecture.png)
+![alt text](architecture1.png)
 
 ## Features
 - Book and movie catalog management
