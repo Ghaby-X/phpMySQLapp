@@ -1,7 +1,7 @@
 <?php
 $servername = $_ENV['DB_SERVERNAME'] ?? "db";
-$username = "root";
-$password = "password123";
+$username = $_ENV['DB_USER'] ?? "root";
+$password = $_ENV['DB_PASSWORD'] ?? "password123";
 $dbname = $_ENV['DB_NAME'] ?? "book_movie_db";
 
 $conn = mysqli_connect($servername, $username, $password,$dbname );

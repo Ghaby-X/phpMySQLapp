@@ -17,6 +17,9 @@ and deployment of high performance web applications which require a solid and re
 - Filter by genre, country, director/author, and year
 - Responsive web interface
 
+## SETTING UP DATABAE
+Database can be set up locally with a mysql docker container or Amazon rds. The database should be seeded with the scripts located in ```   mySqlDB/*   ```
+
 ## Environment Variables
 - `DB_SERVERNAME`: Database server hostname
 - `DB_NAME`: Database name (default: book_movie_db)
@@ -35,6 +38,7 @@ docker run -dp 3000:80 \
 -e DB_SERVERNAME=owbyproject.c1wke6cc8q8b.eu-west-1.rds.amazonaws.com \
 -e DB_NAME=book_movie_db \
 -e DB_PASSWORD=password123 \
+-e DB_USER=root \
 phpapp
 ```
 
